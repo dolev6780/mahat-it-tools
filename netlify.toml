@@ -1,3 +1,14 @@
+# Netlify בונה ומעלה בכל דחיפה ל-main, ומפיק תצוגה מקדימה לכל Pull Request.
+# npm run check רץ לפני ה-build: אם נתוני התרגול לא מגיעים למספרי הבדיקה, הפריסה נעצרת.
 [build]
-  command = "npm run build"
+  command = "npm run check && npm run build"
   publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# קבצי ה-build מקבלים שם עם hash, אז אפשר לשמור אותם במטמון לתמיד
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

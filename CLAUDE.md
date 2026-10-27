@@ -8,7 +8,8 @@
 - RTL מלא: dir="rtl" ב-html, תכונות CSS לוגיות (ms/me, ps/pe, start/end). לא להשתמש ב-ml/mr/pl/pr/left/right.
 - בלי שרת ובלי התחברות. כל הנתונים בקבצי JSON תחת src/data
 - נתב: react-router (HashRouter), כלי אחד לכל נתיב (/lesson/1 ... /lesson/12)
-- פריסה: GitHub Pages (`.github/workflows/deploy.yml`) או Netlify (`netlify.toml`). `base: './'` ב-vite.
+- פריסה: Netlify (`netlify.toml`), אוטומטית מ-`main` + תצוגה מקדימה לכל PR. `base: './'` ב-vite.
+  GitHub Actions (`.github/workflows/ci.yml`) מריץ רק `check` + `build`.
 
 ## עיצוב
 - רקע כהה #0D1524 (`bg`), כרטיסים #1B2943 (`card`), קווים #2A3B5C (`line`)
