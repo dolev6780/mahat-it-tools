@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0D1524;
+  --color-card: #1B2943;
+  --color-line: #2A3B5C;
+  --color-ink: #EEF2F8;
+  --color-ink-2: #AEBBD0;
+  --color-blue: #5AA9FF;
+  --color-orange: #F5A54A;
+
+  --font-display: "Rubik", system-ui, sans-serif;
+  --font-body: "Assistant", system-ui, sans-serif;
+}
+
+html {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 18px;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* מצב הקרנה: כל הממשק גדל יחד כי הכול מוגדר ב-rem */
+html.present {
+  font-size: 26px;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  min-height: 100dvh;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+}
+
+/* מספרים וקודים נשארים משמאל לימין גם בתוך טקסט עברי */
+.num {
+  direction: ltr;
+  unicode-bidi: isolate;
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-blue);
+  outline-offset: 2px;
+}

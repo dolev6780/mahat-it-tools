@@ -1,0 +1,76 @@
+{
+  "lessons": [
+    {
+      "id": 1,
+      "title": "שיעור 1",
+      "summary": "",
+      "ready": false
+    },
+    {
+      "id": 2,
+      "title": "שיעור 2",
+      "summary": "",
+      "ready": false
+    },
+    {
+      "id": 3,
+      "title": "שיעור 3",
+      "summary": "",
+      "ready": false
+    },
+    {
+      "id": 4,
+      "title": "שיעור 4",
+      "summary": "",
+      "ready": false
+    },
+    {
+      "id": 5,
+      "title": "שיעור 5",
+      "summary": "",
+      "ready": false
+    },
+    {
+      "id": 6,
+      "title": "שיעור 6",
+      "summary": "",
+      "ready": false
+    },
+    {
+      "id": 7,
+      "title": "שיעור 7",
+      "summary": "",
+      "ready": false
+    },
+    {
+      "id": 8,
+      "title": "שיעור 8",
+      "summary": "",
+      "ready": false
+    },
+    {
+      "id": 9,
+      "title": "שיעור 9",
+      "summary": "",
+      "ready": false
+    },
+    {
+      "id": 10,
+      "title": "שיעור 10",
+      "summary": "",
+      "ready": false
+    },
+    {
+      "id": 11,
+      "title": "שיעור 11",
+      "summary": "",
+      "ready": false
+    },
+    {
+      "id": 12,
+      "title": "שיעור 12",
+      "summary": "",
+      "ready": false
+    }
+  ]
+}
