@@ -3,25 +3,34 @@ import { useSearchParams } from 'react-router-dom'
 
 /**
  * מצב שנשמר ב-URL (ולא ב-localStorage), כך שקישור משותף או רענון מחזירים לאותו מצב.
- * ערך ריק או ברירת מחדל נמחק מה-URL כדי לשמור קישורים קצרים.
+ * ערך ריק נמחק מה-URL כדי לשמור קישורים קצרים.
+ *
+ * כמה מפתחות שמשתנים יחד חייבים לעבור בקריאה אחת ל-`set`: קריאות עוקבות באותו אירוע
+ * מתחילות כולן מאותו URL, והאחרונה דורסת את הקודמות.
  */
-export function useUrlParam(key: string, fallback = ''): [string, (v: string) => void] {
+export function useUrlParams(): [URLSearchParams, (changes: Record<string, string>) => void] {
   const [params, setParams] = useSearchParams()
-  const value = params.get(key) ?? fallback
   const set = useCallback(
-    (v: string) =>
-      setParams(
-        (prev) => {
-          const next = new URLSearchParams(prev)
-          if (v === '' || v === fallback) next.delete(key)
-          else next.set(key, v)
-          return next
-        },
-        { replace: true },
-      ),
-    [key, fallback, setParams],
+    (changes: Record<string, string>) => {
+      // קוראים את ה-URL הנוכחי ישירות, כדי לא להסתמך על params מרינדור קודם
+      const query = window.location.hash.split('?')[1] ?? ''
+      const next = new URLSearchParams(query)
+      for (const [k, v] of Object.entries(changes)) {
+        if (v === '') next.delete(k)
+        else next.set(k, v)
+      }
+      setParams(next, { replace: true })
+    },
+    [setParams],
   )
-  return [value, set]
+  return [params, set]
+}
+
+export function useUrlParam(key: string, fallback = ''): [string, (v: string) => void] {
+  const [params, set] = useUrlParams()
+  const value = params.get(key) ?? fallback
+  const setOne = useCallback((v: string) => set({ [key]: v === fallback ? '' : v }), [key, fallback, set])
+  return [value, setOne]
 }
 
 export function useUrlFlag(key: string): [boolean, (v: boolean) => void] {

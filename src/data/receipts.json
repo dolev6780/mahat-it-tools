@@ -1,0 +1,118 @@
+{
+  "warehouses": [
+    {
+      "id": 1,
+      "name": "מחסן באר שבע"
+    },
+    {
+      "id": 2,
+      "name": "מחסן אשדוד"
+    }
+  ],
+  "rows": [
+    {
+      "id": 1,
+      "date": "03/03",
+      "supplier": 501,
+      "warehouse": 1,
+      "item": 1003,
+      "qty": 3000
+    },
+    {
+      "id": 2,
+      "date": "03/03",
+      "supplier": 501,
+      "warehouse": 2,
+      "item": 1009,
+      "qty": 2500
+    },
+    {
+      "id": 3,
+      "date": "04/03",
+      "supplier": 501,
+      "warehouse": 1,
+      "item": 1009,
+      "qty": 4000
+    },
+    {
+      "id": 4,
+      "date": "04/03",
+      "supplier": 502,
+      "warehouse": 2,
+      "item": 1002,
+      "qty": 120
+    },
+    {
+      "id": 5,
+      "date": "05/03",
+      "supplier": 501,
+      "warehouse": 2,
+      "item": 1004,
+      "qty": 2200
+    },
+    {
+      "id": 6,
+      "date": "05/03",
+      "supplier": 502,
+      "warehouse": 1,
+      "item": 1007,
+      "qty": 300
+    },
+    {
+      "id": 7,
+      "date": "05/03",
+      "supplier": 503,
+      "warehouse": 1,
+      "item": 1001,
+      "qty": 250
+    },
+    {
+      "id": 8,
+      "date": "06/03",
+      "supplier": 501,
+      "warehouse": 1,
+      "item": 1005,
+      "qty": 1500
+    },
+    {
+      "id": 9,
+      "date": "06/03",
+      "supplier": 502,
+      "warehouse": 2,
+      "item": 1008,
+      "qty": 400
+    },
+    {
+      "id": 10,
+      "date": "09/03",
+      "supplier": 501,
+      "warehouse": 2,
+      "item": 1003,
+      "qty": 900
+    },
+    {
+      "id": 11,
+      "date": "09/03",
+      "supplier": 503,
+      "warehouse": 2,
+      "item": 1001,
+      "qty": 193
+    },
+    {
+      "id": 12,
+      "date": "10/03",
+      "supplier": 501,
+      "warehouse": 1,
+      "item": 1006,
+      "qty": 177
+    },
+    {
+      "id": 13,
+      "date": "10/03",
+      "supplier": 502,
+      "warehouse": 1,
+      "item": 1010,
+      "qty": 60
+    }
+  ]
+}

@@ -2,73 +2,73 @@
   "lessons": [
     {
       "id": 1,
-      "title": "שיעור 1",
+      "title": "מפגש 1",
       "summary": "",
       "ready": false
     },
     {
       "id": 2,
-      "title": "שיעור 2",
+      "title": "מפגש 2",
       "summary": "",
       "ready": false
     },
     {
       "id": 3,
-      "title": "שיעור 3",
-      "summary": "",
-      "ready": false
+      "title": "גישה לקובץ",
+      "summary": "כמה קריאות צריך כדי למצוא רשומה אחת מתוך 10,000?",
+      "ready": true
     },
     {
       "id": 4,
-      "title": "שיעור 4",
+      "title": "מפגש 4",
       "summary": "",
       "ready": false
     },
     {
       "id": 5,
-      "title": "שיעור 5",
+      "title": "מפגש 5",
       "summary": "",
       "ready": false
     },
     {
       "id": 6,
-      "title": "שיעור 6",
-      "summary": "",
-      "ready": false
+      "title": "סימולטור ERP",
+      "summary": "פעולה אחת – כמה מודולים מתעדכנים?",
+      "ready": true
     },
     {
       "id": 7,
-      "title": "שיעור 7",
+      "title": "מפגש 7",
       "summary": "",
       "ready": false
     },
     {
       "id": 8,
-      "title": "שיעור 8",
+      "title": "מפגש 8",
       "summary": "",
       "ready": false
     },
     {
       "id": 9,
-      "title": "שיעור 9",
+      "title": "מפגש 9",
       "summary": "",
       "ready": false
     },
     {
       "id": 10,
-      "title": "שיעור 10",
-      "summary": "",
-      "ready": false
+      "title": "הקשר סינון",
+      "summary": "בוחרים ספק ומחסן ורואים אילו שורות נכנסות לסכום",
+      "ready": true
     },
     {
       "id": 11,
-      "title": "שיעור 11",
+      "title": "מפגש 11",
       "summary": "",
       "ready": false
     },
     {
       "id": 12,
-      "title": "שיעור 12",
+      "title": "מפגש 12",
       "summary": "",
       "ready": false
     }

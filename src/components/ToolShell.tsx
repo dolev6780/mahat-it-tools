@@ -2,10 +2,10 @@ import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { useTeacherMode, useUrlFlag } from '../lib/urlState'
 
-type Props = { title: string; subtitle?: string; children: ReactNode }
+type Props = { eyebrow?: string; title: string; subtitle?: string; children: ReactNode }
 
 /** מסגרת משותפת לכל כלי: כותרת, מעבר מרצה/סטודנט, מצב הקרנה ומסך מלא. */
-export function ToolShell({ title, subtitle, children }: Props) {
+export function ToolShell({ eyebrow, title, subtitle, children }: Props) {
   const [teacher, setTeacher] = useTeacherMode()
   const [present, setPresent] = useUrlFlag('big')
   const ref = useRef<HTMLDivElement>(null)
@@ -30,8 +30,8 @@ export function ToolShell({ title, subtitle, children }: Props) {
   return (
     <div ref={ref} className="min-h-dvh bg-bg px-4 py-4 sm:px-8">
       <header className="mb-6 flex flex-wrap items-center gap-3">
-        <Link to="/" className="text-ink-2 hover:text-ink" aria-label="חזרה לרשימת השיעורים">
-          → כל השיעורים
+        <Link to="/" className="text-ink-2 hover:text-ink" aria-label="חזרה לרשימת המפגשים">
+          → כל המפגשים
         </Link>
         <div className="ms-auto flex flex-wrap gap-2">
           <Segmented
@@ -50,6 +50,7 @@ export function ToolShell({ title, subtitle, children }: Props) {
           </Toggle>
         </div>
       </header>
+      {eyebrow && <p className="text-ink-2">{eyebrow}</p>}
       <h1 className="text-3xl font-bold sm:text-4xl">{title}</h1>
       {subtitle && <p className="mt-1 text-lg text-ink-2">{subtitle}</p>}
       <main className="mt-6">{children}</main>

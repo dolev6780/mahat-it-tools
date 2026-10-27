@@ -1,6 +1,10 @@
 // שומר על נתוני חברת התרגול: הם חייבים להתאים לשקפים. נכשל אם משהו השתנה.
 import company from '../src/data/company.json' with { type: 'json' }
-import { deepStrictEqual } from 'node:assert/strict'
+import fileAccess from '../src/data/fileAccess.json' with { type: 'json' }
+import { deepStrictEqual, equal } from 'node:assert/strict'
+import { binaryProbes } from '../src/lib/fileAccess'
+import { actions, inventoryValue, stockAfter } from '../src/lib/erp'
+import { inContext, rows, sumQty } from '../src/lib/receipts'
 
 const pick = <T extends object, K extends keyof T>(arr: T[], keys: K[]) =>
   arr.map((o) => Object.fromEntries(keys.map((k) => [k, o[k]])))
@@ -27,3 +31,21 @@ deepStrictEqual(
   { inventoryValue: 15580, outbound: 17342, inbound: 15600, supplierNegev: 14277, shipments: 3170 },
 )
 console.log('✓ נתוני חברת התרגול תקינים')
+
+// כל כלי חייב להגיע בדיוק למספר הבדיקה שבשקף
+const cn = company.checkNumbers
+
+// מפגש 3: חיפוש בינארי לרשומת הבדיקה
+equal(binaryProbes(fileAccess.records, fileAccess.check.record).length, fileAccess.check.value, 'מפגש 3: קריאות בינארי')
+
+// מפגש 6: שווי מלאי אחרי כל הפעולות; כל פעולה ניתנת לביצוע בסדר הרשימה
+const ids = actions.map((a) => a.id)
+actions.forEach((a, i) => a.requires.forEach((r) => equal(ids.indexOf(r) < i, true, `מפגש 6: ${a.id} תלוי ב-${r}`)))
+equal(inventoryValue(stockAfter(ids)), cn.inventoryValue.value, 'מפגש 6: ערך מלאי')
+for (const [code, qty] of stockAfter(ids)) equal(qty >= 0, true, `מפגש 6: מלאי שלילי בפריט ${code}`)
+
+// מפגש 10: סה"כ כניסות, והסינון לאריזות הנגב
+equal(sumQty(rows), cn.inbound.value, 'מפגש 10: סה"כ כניסות')
+equal(sumQty(rows.filter((r) => inContext(r, { supplier: 501, warehouse: null }))), cn.supplierNegev.value, 'מפגש 10: אריזות הנגב')
+
+console.log('✓ מפגשים 3, 6, 10 מגיעים למספרי הבדיקה')

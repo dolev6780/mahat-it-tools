@@ -1,0 +1,10 @@
+{
+  "records": 10000,
+  "defaultRecord": 8421,
+  "check": {
+    "record": 8421,
+    "method": "binary",
+    "label": "קריאות בחיפוש בינארי לרשומה 8,421",
+    "value": 14
+  }
+}

@@ -12,12 +12,16 @@ export function Home() {
           <li key={l.id}>
             <Link
               to={`/lesson/${l.id}`}
-              className="block h-full rounded-xl border border-line bg-card p-4 hover:border-blue"
+              className={`flex h-full flex-col rounded-xl border p-4 ${
+                l.ready ? 'border-line bg-card hover:border-blue' : 'border-dashed border-line hover:border-ink-2'
+              }`}
             >
-              <span className="num text-sm text-ink-2">{l.id}</span>
-              <h2 className="text-xl font-bold">{l.title}</h2>
-              {l.summary && <p className="mt-1 text-ink-2">{l.summary}</p>}
-              {!l.ready && <p className="mt-2 text-sm text-orange">בהכנה</p>}
+              <span className="text-sm text-ink-2">
+                מפגש <span className="num">{l.id}</span>
+              </span>
+              <h2 className={`text-xl font-bold ${l.ready ? '' : 'text-ink-2'}`}>{l.ready ? l.title : 'בקרוב'}</h2>
+              {l.ready && l.summary && <p className="mt-1 text-ink-2">{l.summary}</p>}
+              {l.ready && <span className="mt-auto pt-3 font-bold text-blue">לכלי ←</span>}
             </Link>
           </li>
         ))}
