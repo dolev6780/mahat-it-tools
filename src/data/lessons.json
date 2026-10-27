@@ -2,9 +2,9 @@
   "lessons": [
     {
       "id": 1,
-      "title": "מפגש 1",
-      "summary": "",
-      "ready": false
+      "title": "נתונים, מידע וידע",
+      "summary": "מאותן 13 שורות – למידע, ומהמידע – להחלטה",
+      "ready": true
     },
     {
       "id": 2,

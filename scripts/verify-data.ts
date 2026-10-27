@@ -1,10 +1,11 @@
 // שומר על נתוני חברת התרגול: הם חייבים להתאים לשקפים. נכשל אם משהו השתנה.
 import company from '../src/data/company.json' with { type: 'json' }
 import fileAccess from '../src/data/fileAccess.json' with { type: 'json' }
+import d2k from '../src/data/dataToKnowledge.json' with { type: 'json' }
 import { deepStrictEqual, equal } from 'node:assert/strict'
 import { binaryProbes } from '../src/lib/fileAccess'
 import { actions, inventoryValue, stockAfter } from '../src/lib/erp'
-import { inContext, rows, sumQty } from '../src/lib/receipts'
+import { inContext, rows, sumQty, totalsBySupplier } from '../src/lib/receipts'
 
 const pick = <T extends object, K extends keyof T>(arr: T[], keys: K[]) =>
   arr.map((o) => Object.fromEntries(keys.map((k) => [k, o[k]])))
@@ -48,4 +49,10 @@ for (const [code, qty] of stockAfter(ids)) equal(qty >= 0, true, `מפגש 6: מ
 equal(sumQty(rows), cn.inbound.value, 'מפגש 10: סה"כ כניסות')
 equal(sumQty(rows.filter((r) => inContext(r, { supplier: 501, warehouse: null }))), cn.supplierNegev.value, 'מפגש 10: אריזות הנגב')
 
-console.log('✓ מפגשים 3, 6, 10 מגיעים למספרי הבדיקה')
+// מפגש 1: סיכום לפי ספק מגיע לסה"כ כניסות, ובדיוק תשובה נכונה אחת
+const bySupplier = totalsBySupplier(rows)
+equal(bySupplier.reduce((s, t) => s + t.qty, 0), cn.inbound.value, 'מפגש 1: סה"כ כניסות')
+equal(bySupplier.find((t) => t.supplier === 501)?.qty, cn.supplierNegev.value, 'מפגש 1: אריזות הנגב')
+equal(d2k.question.options.filter((o) => o.correct).length, 1, 'מפגש 1: תשובה נכונה אחת')
+
+console.log('✓ מפגשים 1, 3, 6, 10 מגיעים למספרי הבדיקה')
